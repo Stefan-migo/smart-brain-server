@@ -74,8 +74,7 @@ app.use(cors());
 */
 app.get('/', async (req, res) => {
     try {
-        const results = await client.query('SELECT * FROM users');
-        res.json(results.rows[0]);
+        res.json('Hey check my github https://github.com/Stefan-migo');
     } catch (err) {
         console.log(err);
     }
