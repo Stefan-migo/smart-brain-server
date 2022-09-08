@@ -1,5 +1,8 @@
 const handleSignin = (client, bcrypt) => async (req, res) => {
   const { password, email } = req.body // getting information from front end
+  if (!email || !password) {
+    return res.status(400).json('incorrect form submission');
+}
   try {
     const queryText = `SELECT email, hash FROM login WHERE email = '${email}'`
     const data = await client.query(queryText)

@@ -1,5 +1,8 @@
 const handleRegister = (req, res, client, bcrypt) => {
     const { email, name, password } = req.body;
+    if (!email || !name || !password) {
+        return res.status(400).json('incorrect form submission');
+    }
     //we are hashing the password with async bcrypt(), then storing the pass into the database
     //bcrypt() has as parameters: the plainPassword, the salt, and a function with err and hash as a parameters
     bcrypt.hash(password, 10, async function (err, hash) {
